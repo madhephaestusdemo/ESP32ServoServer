@@ -44,6 +44,7 @@ void setup()
 // The loop function is called in an endless loop
 void loop()
 {
+	sensor->loop();
 	manager.loop();
 	coms.server();
 }
