@@ -5,6 +5,7 @@
 #include <PacketEvent.h>
 #include <Esp32SimplePacketComs.h>
 #include <Preferences.h>
+#include <Esp32WiFiManager.h>
 #include <wifi/WifiManager.h>
 #include <server/NameCheckerServer.h>
 #include "src/ServoServer.h"
@@ -16,7 +17,7 @@ UDPSimplePacket coms;
 // WIfi stack managment state machine
 WifiManager manager;
 //The setup function is called once at startup of the sketch
-String * name = new String("hidDevice");
+String * name = new String("kevkat");
 Adafruit_BNO055 bno;
 GetIMU * sensor;
 void setup()
@@ -43,6 +44,7 @@ void setup()
 // The loop function is called in an endless loop
 void loop()
 {
+	sensor->loop();
 	manager.loop();
 	coms.server();
 }
