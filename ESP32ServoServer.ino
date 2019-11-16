@@ -3,9 +3,9 @@
 #include <SimplePacketComs.h>
 #include <WiFi.h>
 #include <PacketEvent.h>
+#include <Esp32WifiManager.h>
 #include <Esp32SimplePacketComs.h>
 #include <Preferences.h>
-#include <Esp32WiFiManager.h>
 #include <wifi/WifiManager.h>
 #include <server/NameCheckerServer.h>
 #include "src/ServoServer.h"
@@ -20,9 +20,11 @@ WifiManager manager;
 String * name = new String("kevkat");
 Adafruit_BNO055 bno;
 GetIMU * sensor;
+Preferences preferences;
 void setup()
 {
-	manager.setupScan();
+	manager.setupAP();
+	//manager.setupScan();
 	sensor = new GetIMU();
 	Serial.println("Loading with name: "+name[0]);
 
